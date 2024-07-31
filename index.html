@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body{
+        width: full;
+        height: 100vh;
+        background-color: black;
+        color:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+      }
+      .h1{
+        padding-bottom: 10px;
+      }
+     section{
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 30px;
+        align-items: center;
+        border: 3px solid whitesmoke;
+        padding: 40px 60px; 
+     }
+     button{
+        padding: 10px 20px;
+     }
+     .inc{
+        background-color: greenyellow;
+     }
+     .dec{
+        background-color: red;
+        color: white;
+     }
+     .count-container{
+        padding: 50px;
+        
+     }
+     #count{
+        font-size: 124px;
+        font-weight: 900;
+        color: aqua;
+     }
+    </style>
+</head>
+<body>
+    <main>
+        <header class="h1">
+            <h1>Counter</h1>
+        </header>
+        <section>
+            <div class="count-container">
+                <span id="count"></span>
+              </div>
+              <div>
+                <button onclick="doIncrement()" id="inc" class="inc">Increment</button>
+                <button onclick="doDecrement()" id="dec" class="dec">Decrement</button>
+              </div>
+        </section>
+        <footer><small>All rights reserved by @Mahamud </small></footer>
+    </main>
+
+    <script>
+        console.log()
+        let currentCount=localStorage.getItem('storedNumber')||0;
+        document.getElementById("count").innerText=currentCount;
+        function doIncrement(){
+            //document.getElementById("dec").style.backgroundColor = "white";
+           // document.getElementById()
+           let incrementCount=++currentCount;
+           document.getElementById('count').innerText=incrementCount;
+           localStorage.setItem('storedNumber',incrementCount);
+        }
+        function doDecrement(){
+            //document.getElementById("dec").style.backgroundColor = "white";
+           // document.getElementById()
+           if(currentCount==0) {
+            document.getElementById('dec').setAttribute('disabled','disabled');
+            return;
+        }
+           let decrementCount=--currentCount;
+           document.getElementById('count').innerText=decrementCount;
+           localStorage.setItem('storedNumber',decrementCount);
+        }
+    </script>
+</body>
+</html>
